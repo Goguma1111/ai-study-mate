@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.2'
+    id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com.aistudy'
+version = '0.0.1'
+
+java {
+    sourceCompatibility = '17'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // 웹 서버 + REST API 기능 (Controller, @RestController 등)
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // DB 접근을 쉽게 해주는 JPA(ORM) 기능
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // 입력값 검증 (@NotNull, @Email 등)
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // MySQL 드라이버 (자바가 MySQL과 대화할 수 있게 해줌)
+    runtimeOnly 'com.mysql:mysql-connector-j'
+
+    // 반복적인 getter/setter 코드를 자동 생성해주는 도구
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // 테스트용
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
