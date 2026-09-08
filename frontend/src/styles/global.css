@@ -1,0 +1,43 @@
+/*
+  이 파일은 앱 전체의 "디자인 원재료"를 정의합니다.
+  색상이나 폰트를 바꾸고 싶으면 컴포넌트 파일이 아니라 여기 변수(:root)만 고치면
+  앱 전체에 한 번에 반영됩니다.
+*/
+
+:root {
+  /* 색상: 스터디 다이어리 느낌의 따뜻한 종이 팔레트 */
+  --color-bg: #fff8ec;          /* 크림색 종이 배경 */
+  --color-surface: #ffffff;      /* 카드 배경 */
+  --color-text: #3a3238;         /* 완전 검정 대신 부드러운 먹색 */
+  --color-text-muted: #8a8189;
+  --color-primary: #ff8fa3;      /* 산호색 - 주요 버튼(로그인) */
+  --color-primary-dark: #f26d86;
+  --color-secondary: #6ec6ca;    /* 민트틸 - 보조 버튼(회원가입), 포인트 */
+  --color-border: #f0e6d8;
+  --color-error: #e35d6a;
+
+  /* 타이포그래피 */
+  --font-display: 'Gaegu', sans-serif;       /* 손글씨 느낌의 제목용 폰트 */
+  --font-body: 'Noto Sans KR', sans-serif;    /* 가독성 좋은 본문용 폰트 */
+
+  /* 레이아웃 */
+  --radius-lg: 24px;
+  --radius-md: 14px;
+  --shadow-soft: 0 10px 30px rgba(58, 50, 56, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+input,
+button {
+  font-family: var(--font-body);
+}

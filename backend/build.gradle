@@ -25,6 +25,14 @@ dependencies {
     // 입력값 검증 (@NotNull, @Email 등)
     implementation 'org.springframework.boot:spring-boot-starter-validation'
 
+    // 로그인/인증 처리 (비밀번호 암호화, 요청 필터링 등)
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // JWT(로그인 토큰) 생성/검증 라이브러리
+    implementation 'io.jsonwebtoken:jjwt-api:0.12.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.5'
+
     // MySQL 드라이버 (자바가 MySQL과 대화할 수 있게 해줌)
     runtimeOnly 'com.mysql:mysql-connector-j'
 

@@ -3,7 +3,7 @@
 ## 폴더 구성
 ```
 ai-study-mate/
- ├─ backend/    # Spring Boot 서버 (포트 8081)
+ ├─ backend/    # Spring Boot 서버 (포트 8080)
  ├─ frontend/   # React 앱 (포트 5173)
  └─ database/   # MySQL 테이블 생성 스크립트
 ```
@@ -23,6 +23,8 @@ ai-study-mate/
 3. `database/schema.sql` 내용을 그대로 붙여넣어 실행합니다. (DB와 테이블 3개가 생성됩니다)
 
 ## 2. 백엔드 실행하기
+> ⚠️ 이 프로젝트는 MySQL을 **8080번 포트**로 설치하신 것에 맞춰, 백엔드 서버는 **8081번 포트**를 쓰도록 설정되어 있습니다.
+
 1. `backend` 폴더를 IntelliJ IDEA(권장)로 엽니다. IntelliJ가 build.gradle을 인식해서 자동으로 필요한 라이브러리를 내려받습니다.
 2. `backend/src/main/resources/application.yml`에서 `password: 여기에_본인_MySQL_비밀번호` 부분을 본인 MySQL 비밀번호로 바꿉니다.
 3. `AiStudyMateApplication.java` 파일을 열고 실행(▶) 버튼을 누릅니다.

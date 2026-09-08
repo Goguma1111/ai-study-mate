@@ -1,23 +1,31 @@
 package com.aistudy.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.List;
 
 /**
- * 브라우저는 기본적으로 "다른 출처(origin)"로의 요청을 막습니다.
- * React는 localhost:5173, 백엔드는 localhost:8080 으로 포트가 다르기 때문에
- * 이 설정이 없으면 프론트에서 API 호출 시 CORS 에러가 발생합니다.
+ * Spring Security를 쓰기 시작하면, CORS 설정은 WebMvcConfigurer 방식이 아니라
+ * 이렇게 CorsConfigurationSource라는 "Bean"으로 등록해야 SecurityConfig에서 인식할 수 있습니다.
+ * (SecurityConfig의 http.cors(...) 부분이 이 Bean을 찾아서 사용합니다)
  */
 @Configuration
-public class CorsConfig implements WebMvcConfigurer {
+public class CorsConfig {
 
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/api/**")                 // /api로 시작하는 모든 요청에 대해
-                .allowedOrigins("http://localhost:5173") // 이 주소에서 오는 요청만 허용
-                .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE")
-                .allowedHeaders("*")
-                .allowCredentials(true);
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(List.of("http://localhost:5173")); // React 개발 서버 주소
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
+        configuration.setAllowedHeaders(List.of("*")); // Authorization 헤더(토큰)도 포함해서 전부 허용
+        configuration.setAllowCredentials(true);
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration); // 모든 경로에 위 설정 적용
+        return source;
     }
 }

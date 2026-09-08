@@ -1,0 +1,131 @@
+/*
+  로그인/회원가입 화면 공통 스타일입니다.
+  컨셉: "책상 위에 마스킹테이프로 붙여놓은 학습 메모지"
+  일반적인 SaaS 카드(둥근 사각형 + 회색 그림자)와 다르게, 카드 위에 살짝 삐뚤어진
+  테이프 조각을 얹어서 손으로 만든 느낌을 줍니다.
+*/
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.auth-card {
+  position: relative; /* 위에 올라갈 테이프(.auth-tape)의 기준점 */
+  width: 100%;
+  max-width: 340px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 48px 32px 36px;
+  text-align: center;
+}
+
+/* 카드 위쪽에 살짝 기울어진 마스킹테이프 장식 */
+.auth-tape {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  width: 88px;
+  height: 32px;
+  background-color: var(--color-secondary);
+  opacity: 0.85;
+  border-radius: 4px;
+}
+
+.auth-emoji {
+  font-size: 32px;
+  margin-bottom: 4px;
+}
+
+.auth-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  margin: 0;
+  color: var(--color-text);
+}
+
+.auth-subtitle {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  margin: 8px 0 28px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.auth-input {
+  padding: 13px 16px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-border);
+  background-color: #fffdf9;
+  font-size: 14px;
+  color: var(--color-text);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.auth-input:focus {
+  border-color: var(--color-secondary);
+}
+
+.auth-error {
+  color: var(--color-error);
+  font-size: 13px;
+  margin: 0;
+}
+
+.auth-button {
+  padding: 13px;
+  border-radius: var(--radius-md);
+  border: none;
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: opacity 0.15s ease, transform 0.1s ease;
+}
+
+.auth-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-button:not(:disabled):active {
+  transform: scale(0.98);
+}
+
+.auth-button--primary {
+  background-color: var(--color-primary);
+}
+
+.auth-button--secondary {
+  background-color: var(--color-secondary);
+}
+
+.auth-footer {
+  margin-top: 22px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.auth-footer a {
+  color: var(--color-primary-dark);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,37 @@
+.dashboard-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+}
+
+.dashboard-greeting {
+  font-family: var(--font-display);
+  font-size: 28px;
+  margin: 0;
+}
+
+.dashboard-email {
+  color: var(--color-text-muted);
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.dashboard-logout {
+  margin-top: 24px;
+  padding: 10px 22px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.dashboard-logout:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary-dark);
+}

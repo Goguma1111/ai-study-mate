@@ -1,11 +1,12 @@
 # 서버가 실행될 포트 (프론트는 보통 5173번, 백엔드는 8081번을 씁니다)
+# ※ MySQL을 8080번으로 설치하셨기 때문에, 백엔드 서버 포트는 8080과 겹치지 않도록 8081로 지정합니다.
 server:
   port: 8081
 
 spring:
   datasource:
-    # 로컬에 설치한 MySQL 접속 정보. DB 이름은 미리 만들어둔 ai_study_mate 로 가정합니다.
-    # (터미널에서: mysql -u root -p 로 접속 후 "CREATE DATABASE ai_study_mate;" 실행)
+    # 로컬 MySQL을 8080번 포트로 설치하신 경우의 접속 주소입니다.
+    # (터미널에서: mysql -u root -p --port=8080 로 접속 후 "CREATE DATABASE ai_study_mate;" 실행)
     url: jdbc:mysql://localhost:8080/ai_study_mate?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     username: root
     password: 1234
@@ -20,3 +21,10 @@ spring:
     properties:
       hibernate:
         format_sql: true # SQL을 보기 좋게 줄바꿈해서 출력
+
+# JWT(로그인 토큰) 설정
+jwt:
+  # 토큰을 서명(위조 방지)하는 데 쓰이는 비밀키. 실제 서비스에서는 절대 코드에 노출하면 안 되고,
+  # 환경변수나 별도 설정파일로 분리해야 하지만, 학습용 MVP라서 일단 여기에 둡니다.
+  secret: ai-study-mate-super-secret-key-please-change-this-in-production-1234567890
+  expiration-ms: 86400000   # 토큰 유효 시간 (24시간, 단위: 밀리초)
